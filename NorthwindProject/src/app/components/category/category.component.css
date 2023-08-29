@@ -1,0 +1,16 @@
+#category {
+    padding:10px;
+    background-color: #282828;
+    color:#fff;
+}
+#category-list ul{
+    list-style-type: none;
+}
+#category-list ul li a{
+    display: block;
+    text-decoration: none;
+    color:#fff;
+    font-family: 'Poppins';
+    font-weight: 300;
+    margin-bottom: 10px;
+}

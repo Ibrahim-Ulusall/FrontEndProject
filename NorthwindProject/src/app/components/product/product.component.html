@@ -1,0 +1,24 @@
+<section id="container">
+    <table class="table table-hover table-responsive-md table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Unit Stock</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        
+          <tr *ngFor="let product of products">
+            <th scope="row">{{ product.productId }}</th>
+            <td>{{ product.productName }}</td>
+            <td>{{ product.UnitPrice }}</td>
+            <td>{{ product.UnitStock }}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+</section>
