@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Models/product';
-import { HttpClient } from '@angular/common/http';
-import { ProductResponseModel } from 'src/app/Models/productResponseModel';
+import { ProductService } from 'src/app/services/product.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -9,18 +9,36 @@ import { ProductResponseModel } from 'src/app/Models/productResponseModel';
 })
 export class ProductComponent implements OnInit {
   products: Product[] = [];
-  apiUrl: string = 'https://localhost:7200/api/products/getAll';
-  constructor(private httpClient: HttpClient) { }
+  dataLoaded: boolean = false;
+  constructor(
+    private productService: ProductService,
+    private activatedRoute:ActivatedRoute,
+    ) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+      this.activatedRoute.params.subscribe(params=>{
+        if(params["categoryId"]){
+          this.getProductByCategoryId(params["categoryId"])
+        }else{
+          this.getProducts()
+        }
+      })
   }
 
   getProducts(): Product[] {
-    this.httpClient.get<ProductResponseModel>(this.apiUrl).subscribe((response) => {
+    this.productService.getProducts().subscribe((response) => {
       this.products = response.data;
+      this.dataLoaded = true;
     });
-
     return this.products;
   }
 
+
+  getProductByCategoryId(id: number): Product[] {
+    this.productService.getByCategoryId(id).subscribe((response) => {
+      this.products = response.data;
+      this.dataLoaded = true;
+    })
+    return this.products;
+  }
 }

@@ -1,1 +1,23 @@
-<p>product works!</p>
+<div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+
+<div class="main-box">
+  <div class="row">
+    <div class="col-6 col-md-4 col-lg-2 mb-4" *ngFor="let product of products">
+      <div class="box">
+        <div class="image-box">
+          <!-- <img src="assets/img.jpg" alt="" class=""> -->
+        </div>
+        <div *ngIf="dataLoaded" class="name-box">
+          <p>{{ product.productName | truncate: 15 }}</p>
+        </div>
+        <div *ngIf="!dataLoaded" class="skeleton-price"></div>
+        <div *ngIf="dataLoaded" class="price">
+          <span>{{ product.unitPrice }} TL </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
