@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit{
 
   products:Product[] = [];
-
+  dataLoaded:boolean = false;
   constructor(private productService:ProductService){}
 
   ngOnInit(): void {
@@ -19,6 +19,7 @@ export class ProductComponent implements OnInit{
   getProducts() : Product[] {
     this.productService.getProductsService().subscribe((response) => {
       this.products = response.data;
+      this.dataLoaded = true;
     });
     return this.products;
   }

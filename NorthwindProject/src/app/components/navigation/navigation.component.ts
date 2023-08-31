@@ -8,6 +8,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class NavigationComponent implements OnInit {
   categories:Category[] = [];
+  dataLoaded:boolean = false;
  
   constructor(private categoryService:CategoryService) {}
   
@@ -18,6 +19,7 @@ export class NavigationComponent implements OnInit {
   getCategories(): Category[] {
     this.categoryService.getCategoriesService().subscribe((response) => {
       this.categories = response.data;
+      this.dataLoaded = true;
     });
     return this.categories;
   }
