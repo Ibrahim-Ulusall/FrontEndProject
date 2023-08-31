@@ -21,4 +21,9 @@ export class ProductService implements OnInit {
     return this.httpClient.get<ListResponseModel<Product>>(newPath);
   }
   
+  
+  getProductsByCategoryIdService(categoryId:number) : Observable<ListResponseModel<Product>> {
+    let newPath = this.apiUrl + "/products/getbyid?id=" + categoryId;
+    return this.httpClient.get<ListResponseModel<Product>>(newPath);
+  }
 }

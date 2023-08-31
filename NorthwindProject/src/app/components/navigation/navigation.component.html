@@ -10,7 +10,7 @@
       <li>
         <a href="#">Kategoriler +</a>
         <ul>
-          <li *ngFor="let category of categories"><a href="#">{{ category.categoryName }}</a>
+          <li *ngFor="let category of categories"><a routerLink="/products/category/{{ category.categoryId }}">{{ category.categoryName }}</a>
           </li>
         </ul>
       </li>
