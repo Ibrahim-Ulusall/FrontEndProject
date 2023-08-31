@@ -43,4 +43,8 @@ export class ProductComponent implements OnInit{
     });
     return this.products;
   }
+
+  addToCart(product:Product){
+    console.log(product);
+  }
 }

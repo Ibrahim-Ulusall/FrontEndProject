@@ -24,7 +24,8 @@
         </div>
       </div>
       <div class="price-box">
-        {{ product.unitPrice | vatAdded : 18 | currency  }}
+        <button (click)="addToCart(product)" class="btn">Sepete Ekle</button>
+        <span>{{ product.unitPrice | vatAdded : 18 | currency  }}</span>
       </div>
     </div>
   </div>

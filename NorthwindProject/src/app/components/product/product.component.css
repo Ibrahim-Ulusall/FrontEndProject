@@ -73,11 +73,26 @@
     text-decoration: none;
     color:rgb(3, 3, 3);
 }
+
 .price-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: absolute;
     left:0;
     bottom:0;
-    width:100%;
+    width: 100%;
+}
+.price-box .btn{
+    margin-left: 5px;
+    width: 100%;
+}
+.price-box .btn , 
+.price-box span{
+    flex:6;
+}
+.price-box span {
+    
     margin-top:5px;
     text-align: right;
     font-family: 'Poppins';
