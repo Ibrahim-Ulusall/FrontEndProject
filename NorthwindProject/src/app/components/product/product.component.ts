@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { ProductService } from 'src/app/services/product.service';
 @Component({
@@ -7,38 +6,20 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
-  products: Product[] = [];
-  dataLoaded: boolean = false;
-  constructor(
-    private productService: ProductService,
-    private activatedRoute:ActivatedRoute,
-    ) { }
+export class ProductComponent implements OnInit{
 
-    ngOnInit(): void {
-      this.activatedRoute.params.subscribe(params=>{
-        if(params["categoryId"]){
-          this.getProductByCategoryId(params["categoryId"])
-        }else{
-          this.getProducts()
-        }
-      })
+  products:Product[] = [];
+
+  constructor(private productService:ProductService){}
+
+  ngOnInit(): void {
+      this.getProducts();
   }
 
-  getProducts(): Product[] {
-    this.productService.getProducts().subscribe((response) => {
+  getProducts() : Product[] {
+    this.productService.getProductsService().subscribe((response) => {
       this.products = response.data;
-      this.dataLoaded = true;
     });
-    return this.products;
-  }
-
-
-  getProductByCategoryId(id: number): Product[] {
-    this.productService.getByCategoryId(id).subscribe((response) => {
-      this.products = response.data;
-      this.dataLoaded = true;
-    })
     return this.products;
   }
 }

@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/Models/category';
 import { CategoryService } from 'src/app/services/category.service';
-
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-export class NavigationComponent implements OnInit{
-
-  categories:Category[] = []
-  constructor(private categoryService:CategoryService){}
+export class NavigationComponent implements OnInit {
+  categories:Category[] = [];
+ 
+  constructor(private categoryService:CategoryService) {}
+  
   ngOnInit(): void {
-      this.getCategories();
+    this.getCategories();
   }
 
-  getCategories() : Category[] {
-    this.categoryService.getCategories().subscribe((response) => {
+  getCategories(): Category[] {
+    this.categoryService.getCategoriesService().subscribe((response) => {
       this.categories = response.data;
-    })
+    });
     return this.categories;
   }
+
 }
