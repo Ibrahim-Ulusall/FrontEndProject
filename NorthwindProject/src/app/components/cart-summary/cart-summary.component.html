@@ -1,0 +1,47 @@
+<div class="box" *ngIf="cartItems.length<1">
+  <div class="title-box">
+    <h5>Sepetiniz Boş</h5>
+  </div>
+  <div class="image-box">
+    <img src="assets/img/emptyBasket.png" alt="basket" class="image">
+  </div>
+
+</div>
+
+
+<table class="table table-striped" *ngIf="cartItems.length>0">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">(%18) KDV'li Fiyat</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cartItem of cartItems">
+      <td>{{ cartItem.product.productName }}</td>
+      <td>{{ cartItem.product.unitPrice | currency }}</td>
+      <td>
+        <div>
+          <div class="form-group">
+              <input type="number" 
+              id="quantity" 
+              class="form-control" 
+              value="{{cartItem.quantity}}" min="1" [defaultValue]="1"/>
+          </div>
+      </div>
+      </td>
+      <td>{{ cartItem.product.unitPrice | vatAdded:18 | currency }}</td>
+      <td><button (click)="removeToCart(cartItem)" class="btn btn-outline-danger">Delete</button></td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td [(ngModel)]="total">{{ total | currency}}</td>
+      <td></td>
+      <td>(%18) Kdv'li Fiyat : {{ total  | vatAdded:18| currency }}</td>
+      <td><button class="btn btn-outline-success">Alışverisi Tamamla</button></td>
+    </tr>
+  </tbody>
+</table>

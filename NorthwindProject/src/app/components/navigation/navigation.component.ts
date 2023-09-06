@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/Models/category';
 import { CategoryService } from 'src/app/services/category.service';
 @Component({
@@ -9,8 +10,11 @@ import { CategoryService } from 'src/app/services/category.service';
 export class NavigationComponent implements OnInit {
   categories:Category[] = [];
   dataLoaded:boolean = false;
- 
-  constructor(private categoryService:CategoryService) {}
+  fill = 'fill';
+  constructor(
+    private categoryService:CategoryService,
+    private router:Router
+    ) {}
   
   ngOnInit(): void {
     this.getCategories();
@@ -22,6 +26,9 @@ export class NavigationComponent implements OnInit {
       this.dataLoaded = true;
     });
     return this.categories;
+  }
+  route(){
+    this.router.navigate(['accounts/login'])
   }
 
 }

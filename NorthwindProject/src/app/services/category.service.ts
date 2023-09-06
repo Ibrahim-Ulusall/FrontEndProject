@@ -12,7 +12,6 @@ export class CategoryService implements OnInit {
   constructor(private httpClient:HttpClient) { }
 
   ngOnInit(): void {
-      
   }
 
   getCategoriesService() : Observable<ListResponseModel<Category>>{

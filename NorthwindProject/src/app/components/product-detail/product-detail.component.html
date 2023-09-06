@@ -1,0 +1,37 @@
+<div class="container" *ngIf="product">
+  <div class="content">
+
+    <div class="row">
+      <div class="col col-lg-3 frame">
+        <div class="image-box">
+
+        </div>
+      </div>
+
+      <div class="col col-lg-9">
+        <div class="card">
+          <div class="card-header">
+            <div class="title">
+              {{ product.productName }}
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, doloremque asperiores! Nisi odit
+              obcaecati molestiae accusantium similique sequi atque sed vel, at, dignissimos perspiciatis qui adipisci
+              possimus culpa quod debitis. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis nulla
+              omnis cum esse odio iure quas! Possimus cupiditate nesciunt deserunt magnam quo omnis officiis voluptatem
+              amet praesentium deleniti! Quasi, ipsum.
+            </p>
+            <p>
+              {{ product.unitPrice | currency}}
+            </p>
+            <p>
+              <button class="btn btn-outline-success" style="float:right;">Sepete Ekle</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

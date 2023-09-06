@@ -1,0 +1,22 @@
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    flex-direction: column;
+    position: relative;
+    top:50px;
+}
+.image-box,.title-box {
+    width: 50%;
+}
+.image-box .image {
+    max-width: 100%;
+    display: block;
+    margin: 10px auto;
+}
+.title-box h5 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.3em;
+}

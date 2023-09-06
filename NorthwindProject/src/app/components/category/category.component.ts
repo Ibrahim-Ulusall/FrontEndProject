@@ -11,7 +11,7 @@ export class CategoryComponent implements OnInit {
   dataLoaded:boolean = false;
   constructor(private categoryService: CategoryService) { }
   ngOnInit(): void {
-
+    this.getCategories();
   }
 
   getCategories(): Category[] {
@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
       this.categories = response.data;
       this.dataLoaded = true;
     });
+    console.log(this.categories.length)
     return this.categories;
   }
 }

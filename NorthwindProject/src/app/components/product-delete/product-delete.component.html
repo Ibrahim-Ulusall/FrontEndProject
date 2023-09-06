@@ -1,0 +1,97 @@
+<div class="m-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control p-2" id="filterText" placeholder="Search Product">
+</div>
+
+  
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="updateProduct">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Güncelle</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="productName">Ürün adı</label>
+            <div class="form-group">
+                <input type="text" 
+                id="productName" 
+                class="form-control" 
+                value="{{updateProduct.productName}}"/>
+            </div>
+          </div>
+          <div class="mb-3">
+              <label for="unitPrice">Ürün Fiyatı</label>
+              <div class="form-group">
+                  <input type="number" 
+                  id="unitPrice" 
+                  class="form-control" 
+                  value="{{updateProduct.unitPrice}}"/>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label for="unitsInStock">Stok Adeti</label>
+              <div class="form-group">
+                  <input type="number" 
+                  id="unitsInStock" 
+                  class="form-control" 
+                  value="{{updateProduct.unitsInStock}}"/>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label for="categoryId">Kategory Id</label>
+              <div class="form-group">
+                  <input type="number" 
+                  id="categoryId" 
+                  class="form-control" 
+                  value="{{updateProduct.categoryId}}"/>
+              </div>
+          </div> 
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">İptal</button>
+          <button type="button" class="btn btn-success" (click) = "UpdateProduct(updateProduct)">Güncelle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product Id</th>
+      <th scope="col">Category Id</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Unit Stock</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products | filter : filterText">
+      <td>{{ product.productId }}</td>
+      <td>{{ product.categoryId }}</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.unitPrice | currency }}</td>
+      <td>{{ product.unitsInStock }}</td>
+      <td>
+        <button (click)="deleteProduct(product)" class="btn btn-outline-danger">Ürünü Sil</button>
+        <button class="btn btn-outline-success mx-1" (click)="active(product)" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Düzenle</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+

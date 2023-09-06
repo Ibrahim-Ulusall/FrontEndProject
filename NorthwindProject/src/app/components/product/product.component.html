@@ -2,14 +2,19 @@
 <div class="m-3" *ngIf="dataLoaded">
   <input type="text" [(ngModel)]="filterText" class="form-control p-2" id="filterText" placeholder="Search Product">
 </div>
+
+
 <div class="row" *ngIf="dataLoaded">
   <div class="col-md-2" *ngFor="let product of products | filter : filterText">
+
     <div class="box">
       <div class="image-box">
         <!-- Image content here -->
       </div>
       <div class="name-box">
-        <p><a href="#">{{ product.productName | truncate : 15}}</a></p>
+        <p><a
+            routerLink="/products/details/{{product.productId}}">{{ product.productName | truncate : 15 | capitalize}}</a>
+        </p>
         <div class="rate">
           <input type="radio" id="star5" name="rate" value="5" />
           <label for="star5" title="text">5 stars</label>
@@ -24,8 +29,9 @@
         </div>
       </div>
       <div class="price-box">
-        <button (click)="addToCart(product)" class="btn">Sepete Ekle</button>
-        <span>{{ product.unitPrice | vatAdded : 18 | currency  }}</span>
+        <button (click)="addToCart(product)" class="btn btn-outline-success" style="border-radius:none;">Sepete
+          Ekle</button>
+        <span>{{ product.unitPrice |  currency  }}</span>
       </div>
     </div>
   </div>
