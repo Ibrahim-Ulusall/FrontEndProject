@@ -1,7 +1,15 @@
+<app-category></app-category>
+
 <span class="loader" *ngIf="!dataLoaded"></span>
-<div class="m-3" *ngIf="dataLoaded">
-  <input type="text" [(ngModel)]="filterText" class="form-control p-2" id="filterText" placeholder="Search Product">
-</div>
+<header class="m-2">
+  <div class="container d-flex justify-content-md-start">
+  
+    <div class="col-6 ms-2 col-lg-auto" role="search">
+      <input type="text" [(ngModel)]="filterText" class="form-control p-2" id="filterText" placeholder="Search Product">    
+    </div>
+  </div>
+</header>
+
 
 
 <div class="row" *ngIf="dataLoaded">
@@ -13,7 +21,7 @@
       </div>
       <div class="name-box">
         <p><a
-            routerLink="/products/details/{{product.productId}}">{{ product.productName | truncate : 15 | capitalize}}</a>
+            href="/products/details/{{product.productId}}">{{ product.productName | truncate : 15 | capitalize}}</a>
         </p>
         <div class="rate">
           <input type="radio" id="star5" name="rate" value="5" />

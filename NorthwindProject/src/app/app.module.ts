@@ -23,6 +23,8 @@ import { ProductUpdateComponent } from './components/product-update/product-upda
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { UpperPipe } from './pipes/upper.pipe';
 
 @NgModule({
   declarations: [
@@ -40,18 +42,20 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ProductDeleteComponent,
     ProductUpdateComponent,
     OrderByPipe,
-    ProductDetailComponent
+    ProductDetailComponent,
+    AdminDashboardComponent,
+    UpperPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:'toast-top-right'
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [
     { provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true }

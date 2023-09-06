@@ -8,6 +8,7 @@ import { ProductDeleteComponent } from './components/product-delete/product-dele
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
 import { loginGuard } from './guards/login.guard';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: ProductComponent },
@@ -15,10 +16,11 @@ const routes: Routes = [
   { path: 'products/category/:categoryId', component: ProductComponent },
   { path: 'summary', component: CartSummaryComponent },
   { path: 'accounts/login', component: LoginComponent },
-  { path: 'products/add' , component:ProductAddComponent,canActivate:[loginGuard]},
-  { path: 'products/delete', component:ProductDeleteComponent },
-  { path: 'products/details/:productId',component:ProductDetailComponent },
-  { path: 'demo',component:ProductUpdateComponent }
+  { path: 'products/add', component: ProductAddComponent, canActivate: [loginGuard] },
+  { path: 'products/delete', component: ProductDeleteComponent },
+  { path: 'products/details/:productId', component: ProductDetailComponent },
+  { path: 'demo', component: ProductUpdateComponent },
+  { path: 'admin', component: AdminDashboardComponent }
 ];
 
 @NgModule({

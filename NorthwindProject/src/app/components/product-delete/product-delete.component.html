@@ -1,4 +1,4 @@
-<div class="m-3">
+<!-- <div class="m-3">
   <input type="text" [(ngModel)]="filterText" class="form-control p-2" id="filterText" placeholder="Search Product">
 </div>
 
@@ -94,4 +94,45 @@
 
 
 
-
+ -->
+<div class="row justify-content-center">
+  <div class="col-12">
+    <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-borderless mb-0">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Ürün Adı</th>
+                <th scope="col">Fiyatı</th>
+                <th scope="col">Stok Adeti</th>
+                <th scope="col">Sil</th>
+                <th scope="col">Güncelle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                
+                <td>{{ product.productId }}</td>
+                <td>{{ product.productName | capitalize}}</td>
+                <td>{{ product.unitPrice | currency }}</td>
+                <td>{{ product.unitsInStock }}</td>
+                <td>
+                  <button type="button" class="btn btn-danger btn-sm px-3">
+                    Del
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-sm px-3">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,7 +12,7 @@ export class AuthService {
 
   apiUrl:string = 'https://localhost:7200/api/'
   constructor(private httpClient:HttpClient) { }
-
+  
   loginService(login:Login) : Observable<DataModel<TokenModel>>{
     let newUri = this.apiUrl + 'auth/login'
     return this.httpClient.post<DataModel<TokenModel>>(newUri,login);
